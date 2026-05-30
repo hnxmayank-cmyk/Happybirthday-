@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Thoughts 📖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================= BODY ================= */
+body{
+margin:0;
+min-height:100vh;
+font-family:'Poppins',sans-serif;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+overflow:hidden;
+padding:20px;
+
+background:
+radial-gradient(circle at 25% 30%, #ffb6d530, transparent 50%),
+radial-gradient(circle at 75% 70%, #9a8cff30, transparent 50%),
+linear-gradient(135deg,#0f0c2e,#1c1a4a,#0a0920);
+
+background-size:300% 300%;
+animation:bgMove 20s ease infinite;
+}
+
+body::after{
+content:"";
+position:fixed;
+inset:0;
+background:url("https://grainy-gradients.vercel.app/noise.svg");
+opacity:0.06;
+pointer-events:none;
+}
+
+body::before{
+content:"";
+position:absolute;
+width:450px;
+height:450px;
+background:radial-gradient(circle,#ffffff18,transparent 70%);
+filter:blur(90px);
+animation:lightMove 14s linear infinite;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+@keyframes lightMove{
+0%{transform:translate(-250px,-180px);}
+50%{transform:translate(200px,150px);}
+100%{transform:translate(-250px,-180px);}
+}
+
+/* ================= CARD ================= */
+.card{
+width:100%;
+max-width:380px;
+padding:40px 30px;
+
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(22px);
+
+border-radius:28px;
+border:1px solid rgba(255,255,255,.18);
+
+box-shadow:
+0 30px 70px rgba(0,0,0,.5),
+inset 0 0 20px rgba(255,255,255,.08);
+
+text-align:center;
+
+animation:cardIn 1s ease, float 6s ease-in-out infinite;
+}
+
+@keyframes cardIn{
+from{
+opacity:0;
+transform:translateY(60px) scale(.95);
+}
+to{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-6px);}
+}
+
+/* ================= TEXT ================= */
+h1{
+color:#e6dcff;
+margin-bottom:16px;
+}
+
+.line{
+color:#f3efff;
+line-height:1.8;
+margin:10px 0;
+
+opacity:0;
+transform:translateY(15px);
+}
+
+/* highlight important feeling */
+.highlight{
+color:#ffd84d;
+font-weight:600;
+text-shadow:0 0 8px rgba(255,216,77,.4);
+}
+
+/* stagger animation */
+.line:nth-of-type(1){animation:fadeUp .7s .4s forwards;}
+.line:nth-of-type(2){animation:fadeUp .7s 1s forwards;}
+.line:nth-of-type(3){animation:fadeUp .7s 1.6s forwards;}
+.line:nth-of-type(4){animation:fadeUp .7s 2.2s forwards;}
+
+@keyframes fadeUp{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* ================= BUTTON ================= */
+button{
+margin-top:30px;
+width:100%;
+padding:15px;
+border:none;
+border-radius:35px;
+
+background:linear-gradient(45deg,#8f7bff,#ff7ab6);
+color:white;
+font-size:16px;
+cursor:pointer;
+
+box-shadow:0 12px 30px rgba(0,0,0,.35);
+
+opacity:0;
+animation:fadeUp .7s 3s forwards, pulse 3s infinite;
+}
+
+@keyframes pulse{
+0%,100%{transform:scale(1);}
+50%{transform:scale(1.05);}
+}
+
+/* ================= EXIT ================= */
+.exit{
+animation:cinematicExit .8s forwards;
+}
+
+@keyframes cinematicExit{
+to{
+opacity:0;
+transform:scale(1.05);
+filter:blur(12px);
+}
+}
+
+/* ================= PARTICLES ================= */
+.particle{
+position:fixed;
+bottom:-40px;
+font-size:18px;
+opacity:.5;
+animation:floatUp 18s linear infinite;
+}
+
+@keyframes floatUp{
+from{transform:translateY(0);opacity:0;}
+20%{opacity:.7;}
+to{transform:translateY(-120vh);opacity:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+
+<h1>My Thoughts 📖</h1>
+
+<p class="line">
+I don’t hate you for anything 🫶🏼. 
+It’s<span class="highlight"> that this silence sometimes scares me a little 😔,</span>
+</p>
+
+<p class="line">
+but I guess slowly I’ll get used to it. I didn’t get much time to make this properly because of exams 📚,
+</p>
+
+<p class="line">
+"Be Happy Forver" 
+Um... <span class="highlight">I only had one day,</span>
+</p>
+
+<p class="line">
+so I couldn’t put in as much effort as I wanted. But <span class="highlight"> i really did try my best</span>… with what ever time I had 🫀✨
+</p>
+
+<button onclick="goNext()">Next →</button>
+
+</div>
+
+<div class="particle" style="left:15%">✨</div>
+<div class="particle" style="left:40%;animation-delay:4s;">💫</div>
+<div class="particle" style="left:70%;animation-delay:7s;">🕊️</div>
+
+<script>
+function goNext(){
+document.getElementById("card").classList.add("exit");
+
+setTimeout(()=>{
+window.location.href="bdaygirl5.html";
+},800);
+}
+</script>
+
+<audio id="music" loop>
+  <source src="snoraxmusic.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let music = document.getElementById("music");
+
+document.addEventListener("click", ()=>{
+  music.volume = 0.4;
+  music.play();
+},{once:true});
+</script>
+
+</body>
+</html>

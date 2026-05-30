@@ -1,0 +1,292 @@
+<!DOCTYPE html>4,0
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One Last Thing 🌸</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+<style>
+
+html, body{
+margin:0;
+padding:0;
+height:100%;
+overflow:hidden;
+background:black;8
+}
+
+/* BACKGROUND */
+body{
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:'Poppins',sans-serif;
+
+background:url("flowers.jpg") center/cover no-repeat;
+min-height:100dvh;
+
+animation:pageLoad 2s ease forwards;
+position:relative;
+}
+
+/* DARK + GLOW LAYER */
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:
+linear-gradient(to top, rgba(0,0,0,0.8), transparent),
+radial-gradient(circle at 50% 30%, rgba(255,180,200,0.25), transparent 60%);
+backdrop-filter:blur(12px);
+}
+
+/* FLOAT LIGHT */
+body::after{
+content:"";
+position:absolute;
+width:800px;
+height:800px;
+background:radial-gradient(circle, rgba(255,120,160,0.35), transparent 70%);
+filter:blur(120px);
+animation:lightMove 16s ease-in-out infinite;
+}
+
+@keyframes lightMove{
+0%{transform:translate(-250px,-200px);}
+50%{transform:translate(300px,180px);}
+100%{transform:translate(-250px,-200px);}
+}
+
+@keyframes pageLoad{
+from{opacity:0; transform:scale(1.1); filter:blur(12px);}
+to{opacity:1; transform:scale(1); filter:blur(0);}
+}
+
+/* CARD */
+.card{
+position:relative;
+z-index:2;
+
+width:90%;
+max-width:420px;
+padding:50px 30px;
+border-radius:30px;
+text-align:center;
+
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(28px);
+
+border:1px solid rgba(255,255,255,0.25);
+
+box-shadow:
+0 40px 120px rgba(0,0,0,0.8),
+inset 0 0 40px rgba(255,255,255,0.2),
+0 0 60px rgba(255,120,160,0.25);
+
+animation:cardEnter 1.2s ease, floatCard 6s ease-in-out infinite;
+}
+
+@keyframes cardEnter{
+from{opacity:0; transform:translateY(120px) scale(.9);}
+to{opacity:1; transform:translateY(0) scale(1);}
+}
+
+@keyframes floatCard{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+}
+
+/* TEXT */
+h1{
+font-family:'Playfair Display',serif;
+font-size:32px;
+color:#ffd6e5;
+margin-bottom:15px;
+
+text-shadow:
+0 0 10px rgba(255,150,180,.6),
+0 0 30px rgba(255,150,180,.4);
+
+opacity:0;
+animation:fadeUp .8s .2s forwards;
+}
+
+p{
+color:#f5f5f5;
+font-size:15px;
+line-height:1.9;
+opacity:0;
+transform:translateY(20px);
+}
+
+p:nth-of-type(1){animation:fadeUp .8s .6s forwards;}
+p:nth-of-type(2){animation:fadeUp .8s 1.2s forwards;}
+p:nth-of-type(3){animation:fadeUp .8s 1.8s forwards;}
+
+.highlight{
+color:#ffd86b;
+font-weight:600;
+text-shadow:0 0 12px rgba(255,216,107,.7);
+}
+
+@keyframes fadeUp{
+to{opacity:1; transform:translateY(0);}
+}
+
+/* QUESTION */
+.question{
+margin-top:25px;
+font-size:22px;
+font-weight:600;
+color:#fff;
+
+text-shadow:
+0 0 10px rgba(255,120,160,.5),
+0 0 25px rgba(255,120,160,.4);
+
+opacity:0;
+animation:fadeUp .8s 2.4s forwards, glowPulse 3s infinite;
+}
+
+@keyframes glowPulse{
+0%,100%{text-shadow:0 0 10px rgba(255,120,160,.4);}
+50%{text-shadow:0 0 30px rgba(255,120,160,.9);}
+}
+
+/* TIMER */
+.timer{
+margin-top:18px;
+font-size:13px;
+color:#ddd;
+opacity:0;
+animation:fadeUp .8s 3s forwards;
+}
+
+/* FINAL TEXT */
+.final{
+position:fixed;
+inset:0;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+z-index:10;
+pointer-events:none;
+}
+
+.final .main{
+font-family:'Playfair Display',serif;
+font-size:24px;
+color:#fff;
+opacity:0;
+transform:translateY(20px);
+text-shadow:0 0 20px rgba(255,160,190,.8);
+}
+
+.final .sub{
+font-size:15px;
+color:#ddd;
+opacity:0;
+transform:translateY(20px);
+margin-top:10px;
+}
+
+.showFinal .main{
+animation:fadeUpFinal 1.5s forwards;
+}
+
+.showFinal .sub{
+animation:fadeUpFinal 1.5s .7s forwards;
+}
+
+@keyframes fadeUpFinal{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* EXIT */
+.fadeCard{
+animation:cardFade 2s forwards;
+}
+
+@keyframes cardFade{
+to{
+opacity:0;
+transform:scale(1.05);
+filter:blur(10px);
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+
+<h1>One Last Thing 🌸</h1>
+
+<p>
+Happy birthday, sona… 13 ho jaogi ab. Still feels weird typing that like time actually listens to us.
+<span class="highlight">Happy birthday. Stay happy always. I don’t blame you for anything,</span>.  
+not even a single thing. I just hope life treats you better 
+</p>
+
+<p>
+When I’m with you, there’s always that one thought…<span class="highlight">“thodi der aur ruk ja.”</span>.  
+But time doesn’t care, and neither do situations. You moved forward… with someone else.
+</p>
+
+<p>
+One month ago I really thought I’d spend your whole birthday with you… like actually be there, talking, laughing, just… existing next to you. <span class="highlight">And now I’m sitting here trying to act normal</span>, while my brain keeps replaying a version of things that doesn’t even exist anymore.... k-khair 
+</p>
+
+<p class="question">
+Ahm.....ik Nhiee kri na vo id login ab tk?? O.O 🤍
+</p>
+
+<div class="timer">
+Thanks for being in my life...😊… <span id="timer">143s</span> ⏳
+</div>
+
+</div>
+
+<div class="final">
+  <div class="main">Once Again...… Happy Birthday my fav person 🎂</div>
+  <div class="sub">I still....... l.... y.....… ^^ ✨</div>
+</div>
+
+<script>
+
+let timeLeft = 143;
+let timerEl = document.getElementById("timer");
+let card = document.getElementById("card");
+
+let countdown = setInterval(()=>{
+  timeLeft--;
+  timerEl.innerText = timeLeft + "s";
+
+  if(timeLeft <= 3){
+    timerEl.innerText = "now...";
+  }
+
+  if(timeLeft <= 0){
+    clearInterval(countdown);
+
+    card.classList.add("fadeCard");
+
+    setTimeout(()=>{
+      document.body.classList.add("showFinal");
+    },2000);
+  }
+
+},1000);
+
+</script>
+
+</body>
+</html>

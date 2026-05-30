@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>No Pressure 🤍</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+/* BACKGROUND */
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+overflow:hidden;
+
+background:
+radial-gradient(circle at 20% 30%, #7a85ff22, transparent 45%),
+radial-gradient(circle at 80% 70%, #ff9ac922, transparent 45%),
+linear-gradient(135deg,#0f1126,#1c1f45,#0a0b1a);
+
+background-size:300% 300%;
+animation:bgMove 25s ease infinite;
+transition:opacity .6s ease;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* CARD */
+.card{
+width:100%;
+max-width:360px;
+padding:34px 28px;
+
+border-radius:28px;
+text-align:center;
+
+background:rgba(255,255,255,0.06);
+backdrop-filter:blur(22px);
+
+border:1px solid rgba(255,255,255,0.12);
+
+box-shadow:
+0 30px 80px rgba(0,0,0,.6),
+inset 0 0 30px rgba(255,255,255,.06);
+
+animation:cardIn 1s ease;
+}
+
+@keyframes cardIn{
+from{
+opacity:0;
+transform:translateY(60px) scale(.95);
+}
+to{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+}
+
+/* TEXT */
+h1{
+color:#e8ebff;
+margin-bottom:14px;
+font-weight:600;
+
+opacity:0;
+animation:fadeUp .8s .3s forwards;
+}
+
+p{
+color:#cfd4ff;
+line-height:1.8;
+font-size:15px;
+
+opacity:0;
+transform:translateY(15px);
+}
+
+/* highlight */
+.highlight{
+color:#ffd84d;
+font-weight:600;
+}
+
+/* animation */
+p:nth-of-type(1){animation:fadeUp .8s .7s forwards;}
+p:nth-of-type(2){animation:fadeUp .8s 1.2s forwards;}
+p:nth-of-type(3){animation:fadeUp .8s 1.7s forwards;}
+
+@keyframes fadeUp{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* BUTTON */
+button{
+margin-top:26px;
+padding:14px 32px;
+border:none;
+border-radius:30px;
+
+background:linear-gradient(45deg,#7c8cff,#ff8ac6);
+color:white;
+font-size:15px;
+cursor:pointer;
+
+box-shadow:
+0 10px 25px rgba(120,120,255,.4);
+
+opacity:0;
+animation:
+fadeUp .8s 2.1s forwards,
+pulse 3s infinite;
+}
+
+@keyframes pulse{
+0%,100%{transform:scale(1);}
+50%{transform:scale(1.05);}
+}
+
+/* EXIT */
+.fadeOut{
+animation:exitSmooth .7s forwards;
+}
+
+@keyframes exitSmooth{
+to{
+opacity:0;
+transform:translateY(-40px) scale(.97);
+filter:blur(8px);
+}
+}
+
+/* PARTICLES */
+.particle{
+position:fixed;
+bottom:-30px;
+font-size:16px;
+opacity:.6;
+animation:floatUp linear infinite;
+}
+
+@keyframes floatUp{
+from{transform:translateY(0);opacity:0;}
+20%{opacity:.8;}
+to{transform:translateY(-120vh);opacity:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>No Pressure 🤍</h1>
+
+<p>
+Heyy… I don’t want to make you feel bad today.
+<span class="highlight">It’s your special day 🫶🏼</span>… (and yeah, somehow mine too, don’t ask). So just stay happy the whole day, okay? Try at least—your friends are probably coming over anyway 👀💭
+</p>
+
+<p>
+I know you might not even like seeing my messages anymore… or maybe you just tolerate them like background noise. Either way, I didn’t want today to carry any heaviness from my side. 
+It’s your birthday, not a courtroom where I come to defend myself again and again 😭 So just enjoy it, laugh a lot, eat cake, do whatever makes you happy. I’ll survive my overthinking on my own like I always do 👍🏼
+</p>
+
+<p>
+Ik you probably don’t feel the same way anymore… but still, <span class="highlight">I thought I’d say this properly for once instead of just disappearing. Stay happy, Sona 🫀</span> 🌙
+</p>
+
+<button onclick="nextPage()">Next →</button>
+
+</div>
+
+<div class="particle" style="left:15%;animation-duration:14s;">✨</div>
+<div class="particle" style="left:40%;animation-duration:18s;">💫</div>
+<div class="particle" style="left:70%;animation-duration:12s;">🌙</div>
+
+<script>
+function nextPage(){
+document.body.classList.add("fadeOut");
+
+setTimeout(()=>{
+window.location.href="bdaygirl7.html";
+},700);
+}
+</script>
+
+<audio id="music" loop>
+  <source src="snorlxmusic.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let music = document.getElementById("music");
+
+document.addEventListener("click", function () {
+  music.volume = 0.4;
+  music.play();
+}, { once:true });
+</script>
+
+</body>
+</html>

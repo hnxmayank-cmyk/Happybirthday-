@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wait a Moment 🌙</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== RESET ===== */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+/* ===== BODY ===== */
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+padding:20px;
+
+opacity:0;
+transform:scale(1.05);
+transition:all 1s ease;
+
+/* background */
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+background-size:200% 200%;
+animation:bgShift 18s ease infinite;
+}
+
+@keyframes bgShift{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* glow */
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at 20% 30%, rgba(255,255,255,0.08), transparent 40%),
+radial-gradient(circle at 80% 70%, rgba(255,255,255,0.05), transparent 40%);
+pointer-events:none;
+}
+
+/* ===== CARD ===== */
+.card{
+width:85%;
+max-width:420px;
+padding:34px 26px;
+text-align:center;
+border-radius:26px;
+
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,0.25);
+
+box-shadow:
+0 20px 60px rgba(0,0,0,.5),
+inset 0 0 20px rgba(255,255,255,.08);
+
+animation:cardEnter 1.2s ease, breathe 6s ease-in-out infinite;
+}
+
+@keyframes cardEnter{
+from{
+opacity:0;
+transform:translateY(60px) scale(.95);
+}
+to{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+}
+
+@keyframes breathe{
+0%,100%{transform:scale(1);}
+50%{transform:scale(1.02);}
+}
+
+/* ===== TEXT ===== */
+h1{
+font-family:'Playfair Display',serif;
+color:#ffffff;
+margin-bottom:16px;
+font-size:28px;
+letter-spacing:.6px;
+
+opacity:0;
+animation:fadeUp .8s .3s forwards;
+}
+
+p{
+color:#ffffff; /* Brightened the text color */
+font-size:18px; /* Increased font size for better readability */
+line-height:1.9;
+letter-spacing:.3px;
+margin-bottom:12px;
+
+opacity:0;
+transform:translateY(15px);
+}
+
+/* stagger animation */
+p:nth-of-type(1){animation:fadeUp .8s .7s forwards;}
+p:nth-of-type(2){animation:fadeUp .8s 1.2s forwards;}
+p:nth-of-type(3){animation:fadeUp .8s 1.7s forwards;}
+p:nth-of-type(4){animation:fadeUp .8s 2.2s forwards;}
+
+@keyframes fadeUp{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* highlight */
+.highlight{
+color:#ffd86b;
+font-weight:500;
+text-shadow:0 0 10px rgba(255,216,107,0.6);
+}
+
+/* ===== BUTTON ===== */
+button{
+margin-top:24px;
+padding:14px 34px;
+border:none;
+border-radius:30px;
+
+background:linear-gradient(45deg,#4facfe,#00f2fe);
+color:white;
+font-size:16px; /* Slightly bigger button text */
+font-weight: 500;
+cursor:pointer;
+
+box-shadow:0 10px 30px rgba(0,150,255,.4);
+
+opacity:0;
+animation:fadeUp .8s 2.8s forwards, pulse 3s infinite;
+transition:.3s;
+}
+
+@keyframes pulse{
+0%,100%{transform:scale(1);}
+50%{transform:scale(1.05);}
+}
+
+button:hover{
+transform:scale(1.08);
+}
+
+/* ===== PARTICLES ===== */
+.particle{
+position:fixed;
+bottom:-20px;
+font-size:16px;
+opacity:.6;
+animation:floatUp linear infinite;
+}
+
+@keyframes floatUp{
+from{transform:translateY(0);}
+to{transform:translateY(-120vh);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>Wait a Moment 🌙</h1>
+
+<p>
+Hey.... 🤍  
+before anything… just give me a minute…
+</p>
+
+<p>
+This isn’t just a normal message…  
+<span class="highlight">it’s something I made for you ⚜️</span>
+</p>
+
+<p>
+I put my heart into this, I hope it makes you smile ✨
+</p>
+
+<p class="highlight">
+I hope you'll like it 🌸
+</p>
+
+<!-- Updated Button Text -->
+<button onclick="nextPage()">Let's start ✨</button>
+
+</div>
+
+<!-- particles -->
+<div class="particle" style="left:10%; animation-duration:12s;">✨</div>
+<div class="particle" style="left:35%; animation-duration:15s;">💫</div>
+<div class="particle" style="left:70%; animation-duration:10s;">⭐</div>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+  <source src="snolaxmusic.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let music = document.getElementById("bgMusic");
+
+/* load */
+window.onload = ()=>{
+  document.body.style.opacity="1";
+  document.body.style.transform="scale(1)";
+
+  let isPlaying = localStorage.getItem("musicPlaying");
+  let time = localStorage.getItem("musicTime");
+
+  if(time) music.currentTime = parseFloat(time);
+
+  if(isPlaying === "true"){
+    music.volume = 0.4;
+    music.play().catch(()=>{});
+  }
+};
+
+/* save */
+setInterval(()=>{
+  if(!music.paused){
+    localStorage.setItem("musicPlaying","true");
+    localStorage.setItem("musicTime", music.currentTime);
+  }
+},1000);
+
+/* first interaction */
+document.addEventListener("click", ()=>{
+  music.volume = 0.4;
+  music.play().then(()=>{
+    localStorage.setItem("musicPlaying","true");
+  }).catch(()=>{});
+},{once:true});
+
+/* next */
+function nextPage(){
+document.body.style.opacity="0";
+
+setTimeout(()=>{
+window.location.href="bdaygirl2.html";
+},800);
+}
+</script>
+
+</body>
+</html>

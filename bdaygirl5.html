@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About You 🌸</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== RESET ===== */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+/* ===== BODY ===== */
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:25px;
+overflow:hidden;
+
+opacity:0;
+transition:opacity .8s ease;
+
+background:
+radial-gradient(circle at 30% 30%, #ffd6e520, transparent 50%),
+radial-gradient(circle at 70% 70%, #ffc2d120, transparent 50%),
+linear-gradient(135deg,#1e1522,#2b1b25,#140d12);
+
+background-size:300% 300%;
+animation:bgMove 18s ease infinite;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* ===== CARD ===== */
+.card{
+width:100%;
+max-width:380px;
+padding:40px 30px;
+
+border-radius:28px;
+text-align:center;
+
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(22px);
+
+border:1px solid rgba(255,255,255,.12);
+
+box-shadow:
+0 30px 80px rgba(0,0,0,.6),
+inset 0 0 25px rgba(255,255,255,.05);
+
+animation:cardIn 1s ease;
+}
+
+@keyframes cardIn{
+from{
+opacity:0;
+transform:translateY(70px) scale(.95);
+}
+to{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+}
+
+/* ===== TITLE ===== */
+h1{
+font-family:'Playfair Display',serif;
+color:#ffd9e8;
+margin-bottom:22px;
+font-size:26px;
+}
+
+/* ===== WORD BOXES ===== */
+.word{
+background:rgba(255,255,255,.10);
+margin:14px 0;
+padding:16px 18px;
+border-radius:18px;
+
+color:#ffeef5;
+font-size:15px;
+line-height:1.6;
+
+opacity:0;
+transform:translateY(20px) scale(.96);
+filter:blur(6px);
+}
+
+/* highlight */
+.highlight{
+color:#ffd84d;
+font-weight:600;
+}
+
+/* reveal */
+@keyframes reveal{
+to{
+opacity:1;
+transform:translateY(0) scale(1);
+filter:blur(0);
+}
+}
+
+.word:nth-of-type(1){animation:reveal .7s .4s forwards;}
+.word:nth-of-type(2){animation:reveal .7s .9s forwards;}
+.word:nth-of-type(3){animation:reveal .7s 1.4s forwards;}
+.word:nth-of-type(4){animation:reveal .7s 1.9s forwards;}
+.word:nth-of-type(5){animation:reveal .7s 2.4s forwards;}
+
+.word:hover{
+background:rgba(255,255,255,.16);
+transform:scale(1.03);
+transition:.3s;
+}
+
+/* ===== BUTTON ===== */
+.next-btn{
+margin-top:28px;
+padding:15px 32px;
+border:none;
+border-radius:35px;
+font-size:15px;
+cursor:pointer;
+color:white;
+
+background:linear-gradient(45deg,#ff7aa8,#ff4f87);
+
+box-shadow:0 12px 30px rgba(255,80,130,.5);
+
+opacity:0;
+animation:fadeUp .8s 3s forwards, pulse 3s infinite;
+}
+
+@keyframes pulse{
+0%,100%{transform:scale(1);}
+50%{transform:scale(1.05);}
+}
+
+.next-btn:hover{
+transform:scale(1.08);
+}
+
+/* EXIT */
+.fadeOut{
+animation:exit .6s forwards;
+}
+
+@keyframes exit{
+to{
+opacity:0;
+transform:scale(.94) translateY(-10px);
+filter:blur(8px);
+}
+}
+
+@keyframes fadeUp{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>About You 🌸</h1>
+
+<div class="word">
+Ahhhh...... <span class="highlight">talking to you feels different that 6min discord vc 🤌🏼</span> 🤍
+</div>
+
+<div class="word">
+The way you talk… simple… calm…  
+still somehow it <span class="highlight">stays in my mind</span> 💭
+</div>
+
+<div class="word">
+Even small things about you…  
+<span class="highlight">I notice them more than I should 💫 </span> 
+</div>
+
+<div class="word">
+And honestly… you’re not like others…  
+<span class="highlight">you feel real</span> 🌙
+</div>
+
+<div class="word">
+Maybe that’s why…  
+back then I started <span class="highlight">liking you without realizing</span> 💛
+</div>
+
+<button class="next-btn" onclick="goNext()">Next →</button>
+
+</div>
+
+<audio id="music" loop>
+  <source src="snorlamusic.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+window.onload = ()=>{
+  document.body.style.opacity="1";
+}
+
+let music = document.getElementById("music");
+
+document.addEventListener("click", ()=>{
+  music.volume = 0.4;
+  music.play();
+},{once:true});
+
+function goNext(){
+document.body.classList.add("fadeOut");
+
+setTimeout(()=>{
+window.location.href="bdaygirl6.html";
+},600);
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For You 🌸</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+/* BODY */
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+padding:20px;
+
+opacity:0;
+transform:scale(1.06);
+transition:all 1s ease;
+
+background:
+radial-gradient(circle at 20% 30%, #ffb6d555, transparent 45%),
+radial-gradient(circle at 80% 70%, #ffd6a555, transparent 45%),
+linear-gradient(135deg,#1a1333,#2b1f55,#1a0f2e);
+
+background-size:300% 300%;
+animation:bgMove 18s ease infinite;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* glow */
+body::before{
+content:"";
+position:absolute;
+width:400px;
+height:400px;
+background:radial-gradient(circle,#ffffff18,transparent 70%);
+filter:blur(80px);
+animation:floatLight 12s ease-in-out infinite;
+}
+
+@keyframes floatLight{
+0%,100%{transform:translate(-150px,-80px);}
+50%{transform:translate(180px,140px);}
+}
+
+/* CARD */
+.card{
+width:100%;
+max-width:360px;
+padding:40px 28px;
+text-align:center;
+border-radius:32px;
+
+background:rgba(255,255,255,0.10);
+backdrop-filter:blur(25px);
+border:1px solid rgba(255,255,255,.15);
+
+box-shadow:
+0 30px 90px rgba(0,0,0,.6),
+inset 0 0 25px rgba(255,255,255,.08);
+
+animation:cardEnter 1.2s ease;
+}
+
+@keyframes cardEnter{
+from{
+opacity:0;
+transform:translateY(80px) scale(.9);
+}
+to{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+}
+
+/* TITLE */
+h1{
+font-family:'Playfair Display',serif;
+font-size:30px;
+margin-bottom:14px;
+
+background:linear-gradient(45deg,#ffb6d5,#ffd6a5);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+opacity:0;
+animation:fadeUp 1s .4s forwards;
+}
+
+/* TEXT */
+p{
+color:#e6e9ff;
+font-size:16px;
+line-height:1.9;
+margin-bottom:10px;
+
+opacity:0;
+transform:translateY(20px);
+}
+
+/* sequence */
+p:nth-of-type(1){animation:fadeUp .8s .9s forwards;}
+p:nth-of-type(2){animation:fadeUp .8s 1.4s forwards;}
+p:nth-of-type(3){animation:fadeUp .8s 1.9s forwards;}
+p:nth-of-type(4){animation:fadeUp .8s 2.4s forwards;}
+
+@keyframes fadeUp{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* highlight */
+.highlight{
+color:#ffe66d;
+font-weight:600;
+text-shadow:0 0 10px rgba(255,230,100,.5);
+}
+
+/* BUTTON */
+button{
+margin-top:30px;
+padding:15px 36px;
+border:none;
+border-radius:40px;
+font-size:16px;
+cursor:pointer;
+
+background:linear-gradient(45deg,#ff8ecf,#ffb86b);
+color:white;
+
+box-shadow:
+0 12px 30px rgba(255,140,200,.4),
+0 0 30px rgba(255,200,120,.2);
+
+opacity:0;
+animation:fadeUp .8s 3s forwards,
+pulse 3s ease-in-out infinite;
+transition:.3s;
+}
+
+@keyframes pulse{
+0%,100%{transform:scale(1);}
+50%{transform:scale(1.06);}
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+/* particles */
+.particle{
+position:fixed;
+bottom:-30px;
+font-size:18px;
+opacity:.7;
+animation:floatUp linear infinite;
+}
+
+@keyframes floatUp{
+from{
+transform:translateY(0) scale(.8);
+opacity:0;
+}
+20%{opacity:.8;}
+to{
+transform:translateY(-120vh) scale(1.2);
+opacity:0;
+}
+}
+
+/* EXIT */
+.fadeOut{
+animation:exit .7s forwards ease;
+}
+
+@keyframes exit{
+to{
+opacity:0;
+transform:scale(.9);
+filter:blur(10px);
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>Hi Sona 🌸</h1>
+
+<p>
+I didn’t want to say everything in a random text… 🤍
+</p>
+
+<p>
+Some feelings feel different…  
+so I wanted to show them instead of just typing them.
+</p>
+
+<p>
+<span class="highlight">Every little part here was made while thinking about you ⚜️</span>
+</p>
+
+<p>
+Maybe it looks simple now…  
+but for me, it means more than that ✨
+</p>
+
+<button onclick="goNext()">Continue →</button>
+
+</div>
+
+<!-- particles -->
+<div class="particle" style="left:15%;animation-duration:12s;">✨</div>
+<div class="particle" style="left:40%;animation-duration:15s;">🌸</div>
+<div class="particle" style="left:70%;animation-duration:11s;">💫</div>
+
+<script>
+
+/* load */
+window.onload = ()=>{
+document.body.style.opacity="1";
+document.body.style.transform="scale(1)";
+};
+
+/* next */
+function goNext(){
+document.body.classList.add("fadeOut");
+
+setTimeout(()=>{
+window.location.href="bdaygirl3.html";
+},600);
+}
+
+</script>
+
+</body>
+</html>
